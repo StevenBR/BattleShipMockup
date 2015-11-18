@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
@@ -24,15 +25,19 @@ public class BSView extends View{
 
         battleship = BitmapFactory.decodeResource(getResources(), R.drawable.battleship);
         big_airplane = BitmapFactory.decodeResource(getResources(), R.drawable.big_airplane);
-
+        water = BitmapFactory.decodeResource(getResources(), R.drawable.water);
     }
 
     public void onDraw(Canvas c){
         int h = getHeight();
         int w = getWidth();
 
-        Paint forbitmap = new Paint();
+        Paint paintBit = new Paint();
+        c.drawColor(Color.WHITE);
         battleship = battleship.createScaledBitmap(battleship, (int)(w*.4), (int)(h*.2), true);
-        c.drawBitmap(battleship, w * .5f, h * .3f, forbitmap);
+        for(int i=0; i<w; i+=water.getWidth()){
+            c.drawBitmap(water, i , h*.5f, paintBit);
+        }
+        c.drawBitmap(battleship, w * .5f, h * .3f, paintBit);
     }
 }
