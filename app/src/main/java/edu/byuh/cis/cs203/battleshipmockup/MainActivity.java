@@ -14,6 +14,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_main);
+//      instantiating the BattleShip game view that we hand coded
+        BSView gv = new BSView(this);
+//      telling the screen to show BSView from above
+        setContentView(gv);
     }
 }
